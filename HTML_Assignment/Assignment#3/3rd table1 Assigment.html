@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+  
+   
+    <title>3rd Table </title>
+    <style>
+
+
+       html{
+        margin-top: 0%;
+        margin-left: 0%;
+        margin-bottom: 0%;
+        margin-right: 0%;
+        height: 100%;
+        
+        
+       }
+       
+        body{
+            background-color: black;
+            color: rgb(186, 189, 192); 
+            background-image: url("https://imgd.aeplcdn.com/1280x720/n/cw/ec/44686/activa-6g-right-front-three-quarter.jpeg?q=80");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+           
+          
+        
+        }
+       
+        table,th,td{
+            border: 1px solid gray;
+            border-collapse: collapse;
+            text-align: center;
+            padding: 10px;
+            margin-left: 180px;
+            margin-top: 40px;
+            width: 800px;
+            height: 30px;
+            font-family: sans-serif;
+           
+           
+        }
+        th:nth-child(even), th:nth-child(odd)
+        {
+            background-color: rgb(82, 75, 75);
+        }
+        caption{
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+
+        <div class="overlay">
+        <table id="myTable" class="display">
+       
+        <caption> Items Sold August 2016</caption>
+        <tr>
+            <th colspan="2" rowspan="2" style="background-color: black;"></th>
+            <th colspan="3">Cloths</th>
+            <th colspan="2">Accessories</th>
+        </tr>
+
+        <tr>
+            <th>Trousers</th>
+            <th>Skirts</th>
+            <th>Dresses</th>
+            <th>Bracelets</th>
+            <th>Rings</th>
+        </tr>
+
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+        
+       <script>
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+        } );
+        </script>
+
+
+        <tr>
+            <th rowspan="3">Belgium</th>
+            <th>Antwep</th>
+            <td>56</td>
+            <td>22</td>
+            <td>43</td>
+            <td>72</td>
+            <td>23</td>
+        </tr>
+        <tr>
+            <th>Gent</th>
+            <td>46</td>
+            <td>18</td>
+            <td>50</td>
+            <td>61</td>
+            <td>15</td>
+        </tr>
+        <tr>
+            <th>Brusseis</th>
+            <td>51</td>
+            <td>27</td>
+            <td>38</td>
+            <td>69</td>
+            <td>28</td>
+        </tr>
+        <tr>
+            <th rowspan="2">The Netherlands</th>
+            <th>Amsterdam</th>
+            <td>89</td>
+            <td>34</td>
+            <td>69</td>
+            <td>85</td>
+            <td>38</td>
+        </tr>
+        <tr>
+            <th>Utrecht</th>
+            <td>80</td>
+            <td>12</td>
+            <td>43</td>
+            <td>36</td>
+            <td>19</td>
+
+        </tr>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
