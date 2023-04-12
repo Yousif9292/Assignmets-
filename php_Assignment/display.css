@@ -29,17 +29,27 @@ caption{
     font-size: 30px;
   
 }
-#creat_btn{
+#creat_btn2{
+    float: right;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    margin-top: -25px;
+    padding: 10px;
+    font-size: 18px;
+    
+}
+#creat_btn1{
     float: right;
     margin-right: 10px;
     margin-bottom: 20px;
-    margin-top: -45px;
-    background-color: rgb(64, 139, 237);
-    border-radius: 16px;
+    background-color: rgb(85, 85, 185);
+    margin-top: -25px;
     padding: 10px;
     font-size: 18px;
-    color: aliceblue;
+    color: azure;
+    
 }
+
 body{
     margin: 0px;
     padding: 0px;
@@ -53,9 +63,10 @@ h3{
     background-color: rgb(104, 104, 224);
     color: azure;
     border-radius: 10px;
-    padding: 10px;
-    width: 80px;
+    padding: 6px;
+    width: 63px;
     font-size: 15px;
+    margin-left: 0px;
 }
 a{
     text-decoration: none;
@@ -66,9 +77,12 @@ a{
     background-color: red;
     color: azure;
     border-radius: 10px;
-    padding: 10px;
-    width: 80px;
+    padding: 2px;
+    width: 64px;
     font-size: 15px;
-
+    float: left;
+    margin-left: 46px;
+    margin-top: 0px;
 }
+
 

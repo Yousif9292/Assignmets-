@@ -1,6 +1,6 @@
 <?php
 
-$ID=$_GET["id"];
+$ID=$_POST["id"];
 $con = mysqli_connect('localhost', 'root', '', 'user record');
 
 
