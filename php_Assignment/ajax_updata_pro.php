@@ -2,7 +2,7 @@
 
 $con = mysqli_connect('localhost', 'root', '', 'user record');
 
-$ID= mysqli_real_escape_string($con, $_POST['id']);
+$ID= mysqli_real_escape_string($con, $_POST['ID']);
 $last_name= mysqli_real_escape_string($con, $_POST['last_name']);
 $name= mysqli_real_escape_string($con, $_POST['name']);
 $email= mysqli_real_escape_string($con, $_POST['email']);
@@ -13,12 +13,5 @@ $query= "UPDATE teacher SET  name='$name', last_name='$last_name' , email='$emai
 user_type='$user_type', Status='$Status' WHERE id='$ID'";
 
 $result = mysqli_query($con, $query);
-if($result)
-{
-    echo "data update success";
-}
-
-
-
 header('location:display.php');
 ?>

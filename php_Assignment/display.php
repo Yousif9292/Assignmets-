@@ -10,6 +10,13 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <!-- for modal form  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.3/components/modal/">
+    <link rel="preconnect" href="https://AK7KMZKZHQ-dsn.algolia.net" crossorigin="">
+    <script src="/docs/5.3/assets/js/color-modes.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet"> -->
+
     <!-- PDF Button -->
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css">
 
@@ -18,109 +25,8 @@
   
   <h3>User Record</h3>
   <a href="form task.php"><button  id="creat_btn1"   type="button"> Creat New User </button></a>
+  <div id="contact"><button type="button" id="creat_btn2"  class="btn btn-info btn" data-toggle="modal" data-target="#contact-modal">Modal Form</button></div>
   
-  <!-- the modal form start  for creat new user   -->
-     <div id="contact"><button type="button" id="creat_btn2"  class="btn btn-info btn" data-toggle="modal" data-target="#contact-modal">Modal Form</button></div>
-<div id="contact-modal" class="modal fade" role="dialog">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<a class="close" data-dismiss="modal">×</a>
-				<h3>Contact Form</h3>
-			</div>
-			<form id="contactForm" name="submit_form" role="form"  method="POST" action="U_record.php"  onsubmit="return validateForm()" required>
-				<div class="modal-body">				
-					<div class="form-group">
-						<label for="name">Name</label>
-						<input type="text" name="name" class="form-control">
-					</div>
-          <div class="form-group">
-            <label for="last_name">Last Name</label>
-						<input type="text" name="last_name" class="form-control">
-					</div>
-					<div class="form-group">
-            <label for="email">Email</label>
-						<input type="email" name="email" class="form-control">
-					</div>
-					<div class="form-group">
-          <select name="Status" class="form-select  form-select-sm mb-3"> 
-            <option selected>Select User Status </option>
-           <option value="1" > Active</option>
-           <option value="0" >Disactive</option>
-        </select>
-					</div>
-          <div class="form-group">
-          <select name="user_type" class="form-select  form-select-sm mb-3"> 
-            <option selected>Select User Type </option>
-            <option value="Student" > Student</option>
-           <option value="Teacher" >Teacher</option>
-          </select>
-        </div>					
-      </div>
-      <div class="modal-footer">					
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <input type="submit" class="btn btn-success" id="submit">
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
-
-
-<!-- modal form end -->
-
-<!-- Update Modal Form Start -->
-<div id="update-modal" class="modal fade" role="dialog">
-<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<a class="close" data-dismiss="modal">×</a>
-				<h3>Update Form</h3>
-			</div>
-			<form id="contactForm" name="submit_form" role="form"  method="POST" action="update-pro.php"  onsubmit="return validateForm()" required>
-				<div class="modal-body">				
-					<div class="form-group">
-						<label for="name">Name</label>
-						<input type="text" name="name" class="form-control">
-					</div>
-          <div class="form-group">
-            <label for="last_name">Last Name</label>
-						<input type="text" name="last_name" class="form-control">
-					</div>
-					<div class="form-group">
-            <label for="email">Email</label>
-						<input type="email" name="email" class="form-control">
-					</div>
-					<div class="form-group">
-          <select name="Status" class="form-select  form-select-sm mb-3"> 
-            <option selected>Select User Status </option>
-           <option value="1" > Active</option>
-           <option value="0" >Disactive</option>
-        </select>
-					</div>
-          <div class="form-group">
-          <select name="user_type" class="form-select  form-select-sm mb-3"> 
-            <option selected>Select User Type </option>
-            <option value="Student" > Student</option>
-           <option value="Teacher" >Teacher</option>
-          </select>
-        </div>					
-      </div>
-      <div class="modal-footer">					
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <input type="submit" class="btn btn-success" id="submit">
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
-
-
-
-
-
-<!-- Update Modal End -->
-
     <?php
     $con= mysqli_connect('localhost', 'root' , '', 'user record');
    
@@ -147,7 +53,7 @@
           <td> $row[email]    </td>
           <td> $btn</td>
           <td> $row[user_type]</td> 
-          <td>  <div id='contact'><button type='button' id='up_btn'  class='btn btn-info btn' data-toggle='modal' data-target='#update-modal'>Update</button></div>
+          <td>  <div id='contact'><button type='button' id='up_btn' data-id='$row[id]'  class='btn btn-info btn upbtn' data-toggle='modal' >Update</button></div>
         &nbsp 
           <form action='delete.php' method='POST' id='del_btn'>
           <input type='hidden' name='id' id='id' value='$row[id]'>
@@ -186,6 +92,9 @@
 
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+   </script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
@@ -196,10 +105,15 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <!-- sweet alert -->
-  <script>
-    $('.submitForm').on('click',function(e){
-        e.preventDefault();
+
+<!-- AJAX CND -->
+<script  src=""></script>
+
+
+<!-- sweet alert -->
+<script>
+  $('.submitForm').on('click',function(e){
+    e.preventDefault();
         var form = $(this).parents('form');
         Swal.fire({
             title: 'Are you sure?',
@@ -247,18 +161,168 @@
                 'targets': [6]
         }],
 
+      });
     });
-});
 
-</script>
+  </script>
 
 <script>
-  $("#up_btn a").on('click', function(){
-    var Id= $(this).attr("data-id");
-    alert(" Data ID : " + Id);
-  })
+  $(".upbtn").on('click', function(){
+    var id= $(this).attr("data-id");
+
+    $.ajax({
+      type: 'POST',
+      url: './ajax.php/',
+      
+      data:{id: id},
+      success:function(data){
+        var json = JSON.parse(data);
+        $('#ID').val(json.id);
+        $('#name').val(json.name)
+        $('#last_name').val(json.last_name)
+        $('#email').val(json.email)
+        $('#Status').val(json.Status)
+        $('#user_type').val(json.user_type)
+        $("#update-modal").modal('show');
+      }
+    })
+  });
 </script>
 
+<!-- <script>
+  $("#up_btn").on('click', function(){
+    var id= $(this).attr("data-id");
+    
+$.ajax{
+  method: 'POST',
+  dataType: 'json',
+  url: './ajax.php/',
+  data:{id: id},
+  success.function(data)
+  {
+    var json= JSON.parse(data);
+    $('#ID').val('json.')
+  }
+}
+    })
+  });
+</script> -->
+
+<!-- the modal form start  for creat new user   -->
+<div class="modal fade" id="contact-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Creat New User</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="contactForm" name="submit_form" role="form"  method="POST" action="U_record.php"  onsubmit="return validateForm()" required>
+          <div class="modal-body">				
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" name="name" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="last_name">Last Name</label>
+              <input type="text" name="last_name" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" name="email" class="form-control">
+            </div>
+            <div class="form-group">
+              <select name="Status" class="form-select  form-select-sm mb-3"> 
+                <option selected>Select User Status </option>
+                <option value="1" > Active</option>
+                <option value="0" >Disactive</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <select name="user_type" class="form-select  form-select-sm mb-3"> 
+                <option selected>Select User Type </option>
+                <option value="Student" > Student</option>
+                <option value="Teacher" >Teacher</option>
+              </select>
+            </div> 
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <input type="submit" class="btn btn-primary" id="Submit">
+            </div> 
+          </div>
+        </form>  					
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal form end -->
+
+<!-- Update Modal Form Start -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="update-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Form</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form id="updateForm" name="submit_form" role="form"  method="POST" action="ajax_updata_pro.php"   required>
+        <div class="modal-body">				
+          <div class="form-group">
+            <input type="hidden" name="ID" id="ID" class="form-control" value="">
+          </div>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" class="form-control" id="name">
+          </div>
+          <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" class="form-control" id="last_name" value="">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" class="form-control" id="email" value="">
+          </div>
+          <div class="form-group">
+            <select name="Status" class="form-select  form-select-sm mb-3" id="Status"> 
+              <option selected></option>
+              <option value="1" > Active</option>
+              <option value="0" >Disactive</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select name="user_type" class="form-select  form-select-sm mb-3" id="user_type"> 
+              <option selected></option>
+              <option value="Student" > Student</option>
+              <option value="Teacher" >Teacher</option>
+            </select>
+          </div>					
+          
+          <div class="modal-footer">					
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" id="submit">
+          </div>
+
+          <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary">
+          </div> -->
+        </div>    
+      </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Update Modal End -->
 
 
 
